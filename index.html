@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+    <title>Restaurant Name | Arusha</title>
+
+     <!--favicon-->
+    <link rel="icon" href="logo/0f277f5f07a6399788894bc1062b5308.jpg">
+
+</head>
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+/* Scroll to top button */
+#progress{
+  position:fixed;
+  right:30px;
+  bottom:20px;
+  width:45px;
+  height:45px;
+  display:none;
+  place-items:center;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:9999;
+}
+#progress-value{
+  height:calc(98% - 3px);
+  width:calc(98% - 3px);
+  background-color:#009419;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-size:1.25rem;
+  position: sticky;
+  color:#fff;
+}
+
+/* WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 0px;
+  left: 26px;
+  z-index: 1000;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 6px;
+}
+.whatsapp-float img {
+  width: 45px;
+  height: 45px;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/* Header/Nav */
+header {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+    background: transparent;
+}
+header .logo-wrapper img {
+    width: 100px;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+}
+nav ul li {
+    margin-left: 35px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #ff4800;
+}
+
+/* Hero Slider */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+.slide.active {
+    opacity: 1;
+}
+.hero-content {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background: rgba(0,0,0,0.35);
+    padding: 30px 40px;
+    border-radius: 10px;
+    max-width: 700px;
+}
+.hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+.hero-content p {
+    margin-bottom: 20px;
+    font-size: 19px;
+}
+.hero-content a {
+    background: #a00000;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+.hero-content a:hover {
+    background: #043b06;
+}
+/* WHY US */
+.why-us-section{
+  background-color: #002d04;
+  padding:6rem 2rem;
+  text-align:center;
+  color:var(--white)
+}
+.why-us-section h2{
+  font-size:clamp(1.4rem,2.7vw,2rem);
+  margin-bottom:1.5rem;
+  font-weight:700;
+  color: white;
+}
+.why-us-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1.5rem;
+  justify-items:center}
+.why-box{
+  background:white;
+  border-radius:12px;
+  padding:1.25rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align:center;
+  transition:transform .25s,box-shadow .25s
+}
+.why-box i{font-size:1.6rem;color:#3b0803;margin-bottom:.75rem}
+.why-box h3{font-size:1.05rem;color:#000;margin-bottom:.5rem}
+.why-box p{font-size:.95rem;color:#333}
+.why-box:hover{transform:translateY(-8px);box-shadow:0 10px 22px rgba(0,0,0,0.15)}
+.why-box:hover i{color:var(--accent-dark)}
+/*===== TEAM SECTION STYLES ===== */
+.team-heading {
+  text-align: center;
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 40px;
+  text-shadow: 5px 5px 5px rgba(20, 20, 20, 0.849);
+  position: relative;
+}
+.team-heading::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: #ffffff;
+  margin: 1px auto 0;
+  border-radius: 3px;
+}
+.team-carousel {
+  position: relative;
+  max-width: 1300px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.team-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px;
+}
+
+.team-track::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-item {
+  flex: 0 0 300px;
+  border: 1px solid #666666;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu-item div {
+    padding: 15px;
+}
+
+.menu-item h4 {
+    margin: 0 0 5px;
+    color: #fff;
+    font-size: 21px;
+    text-shadow: 5px 5px 5px rgba(20, 20, 20, 0.849);
+}
+.menu-item p {
+    margin: 0 0 5px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    text-shadow: 5px 5px 5px rgba(20, 20, 20, 0.849);
+}
+/* Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0a7c00;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  font-size: 22px;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: #003480;
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+/* styling gallery */
+.gallery{
+  background-color: #002d04;
+  margin: auto;
+  text-align: center;
+  padding-top: 10px;
+}
+.gallery h2{
+  text-align: center;
+  font-size: 32px;
+  color: white;
+  margin-bottom: 40px;
+  position: relative;
+}
+.gallery h2::after{
+  content: '';
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: white;
+  margin: 1px auto 0;
+  border-radius: 3px;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+.column{
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+.column img{
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  transition: .3s ease;
+}
+.column:hover{
+  transform: translateY(-3px);
+}
+/* CONTACT */
+    .address {
+      background: #002d04e0;
+      text-align: center;
+      color: white;
+      padding: 60px;
+    }
+    .contact {
+      background: #002d04;
+      text-align: center;
+      color: white;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      margin-top: 60px;
+    }
+    /* Smooth anchor scroll offset for fixed navbar */
+    section {
+      scroll-margin-top: 80px;
+    }
+    /* styling footer */
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: auto;
+    background: rgb(0, 0, 0);
+    padding: 50px 20px;
+  }
+ul{
+    list-style: none;
+    text-align: left;
+    
+}
+.list{
+    padding: 7px;
+}
+.list li{
+    width: auto;
+    text-align: center;
+    list-style-type: none;
+    padding: 10px;
+    position: relative;
+    font-size: .95rem;
+}
+.list li::before{
+    content: "";
+    position: absolute;
+    transform: translate(-50px -50px);
+    left: 50%;
+    top: 100%;
+    width: 0;
+    height: 2px;
+    background: #920000;
+    transition-duration: .5s;
+}
+.list li:hover::before{
+    width: 70px;
+}
+.footer-col{
+    width: 25%;
+    padding: 7px;
+}
+.footer-col h2 {
+    position: relative; /* Required for ::before to position properly */
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ffffffd7;
+}
+.footer-col h2::before {
+    content: "";
+    position: absolute;
+    left: 50%; /* Center the line */
+    transform: translateX(-50%);
+    bottom: -6px;
+    background-color: #c7b8b8;
+    height: 2px;
+    width: 40px;
+}
+.footer-col p{
+    color: #fff;
+    width: 260px;
+    margin: auto;
+    padding: 10px 3px;
+    font-size: .95rem;
+ }
+.social-icons{
+    text-align: center;
+    padding: 7px;
+ }
+.social-icons li{
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+   
+ }
+.social-icons i{
+    color: white;
+    font-size: 20px;
+ }
+a{
+    text-decoration: none;
+    color: #ffffff;
+ }
+a:hover{
+    color: #f87800;
+ }
+.social-icons i:hover{
+    color: #f87800;
+ }
+.bottom-bar{
+    text-align: center;
+    padding: 10px 0;
+    margin: auto;
+    margin-top: 50px;
+ }
+.bottom-bar p{
+    color: #ffffff;
+    margin: auto;
+    font-size: .95rem;
+    padding: 7px;
+}
+/*styling bottom-footer*/
+.bottom-footer{
+    text-align: center;
+    background-color: #292929;
+}
+.craft{
+    padding: 6px ;
+}
+.craft p{
+    color: #fff;
+}
+.craft a{
+    color: #ffffff;
+}
+.craft a:hover{
+    color: #ff9100;
+}
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .team-card { flex: 0 0 80%; margin: 0 auto; }
+  .carousel-btn { width: 38px; height: 38px; font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .team-card { flex: 0 0 90%; }
+}
+@media (max-width: 900px) {
+    /* Header adjustments */
+    header {
+        padding: 10px 20px;
+    }
+    header .logo-wrapper img {
+        width: 75px;
+    }
+
+    /* Navigation container styling */
+    header nav {
+        position: absolute;
+        width: 100%;
+        top: 70px; /* below top-footer */
+        left: 0;
+        background: rgba(139, 46, 35, 0.95); /* semi-transparent theme color */
+        display: none; /* hidden by default */
+        z-index: 1000;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    /* Show menu when header has 'active' class */
+    header.active nav {
+        display: block;
+    }
+
+    /* Menu list items */
+    header nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    header nav ul li {
+        list-style: none;
+        margin: 15px 0;
+    }
+
+    header nav ul li a {
+        display: block;
+        color: #fff;
+        font-size: 18px;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    header nav ul li a:hover {
+        color: #ff9696;
+    }
+
+    /* Toggle button (hamburger icon) */
+    .menuToggle {
+        position: relative;
+        width: 40px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10001; /* above nav */
+    }
+
+    .menuToggle::before{
+        content: '';
+        position: absolute;
+        width: 70%;
+        height: 1.5px;
+        background: white;
+        transform: translateY(-12px);
+        box-shadow: 0 12px white;
+        transition: all 0.3s ease;
+    }
+    .menuToggle::after{
+        content: '';
+        position: absolute;
+        width: 70%;
+        height: 1.5px;
+        background: white;
+        transform: translateY(12px);
+        transition: all 0.3s ease;
+    }
+    /* Transform to X when active */
+    header.active .menuToggle::before {
+      transform: rotate(45deg);
+      box-shadow: none;
+    }
+    header.active .menuToggle::after {
+      transform: rotate(-45deg);
+    }
+    .column {
+      flex: 100%;
+      max-width: 100%;
+    }
+     footer{
+        flex-direction: column;
+    }
+    .footer-col {
+      width: 100%;
+    }
+    .footer-col p {
+        width: 100%;
+    }
+    .footer-col h2 {
+        text-align: left;
+    }
+    .footer-col h2::before {
+        left: 5%; /* Center the line */
+    }
+    .social-icons{
+        text-align: left;
+        padding: 7px;
+    }
+    .list li{
+        text-align: left;
+        border-bottom: 1px solid #ffffff79;
+    }
+    .list li::before{
+        display: none;
+    }
+}
+
+</style>
+<body>
+<!--scrollbutton-->
+<div id="progress"><span id="progress-value">&#x1F815</span></div>
+
+<!-- WhatsApp Chat Button -->
+<a href="https://wa.me/254748646817?text=Hello%20Brickhouse Restaurant!%20I'm%20interested%20in%20your%20services" 
+   class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+   <img src="https://img.icons8.com/color/48/002d04/whatsapp--v1.png" alt="WhatsApp Chat">
+</a>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo-wrapper">
+            <img src="logo/0f277f5f07a6399788894bc1062b5308-removebg-preview.png" class="logo">
+        </div>
+        <div class="menuToggle"></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Slides -->
+    <div class="slide active" style="background-image: url('image/90b8e2092a439e79a8644dfcf56089ca.jpg');"></div>
+    <div class="slide" style="background-image: url('image/544e3e4c703f18849d9a1242da229b28.jpg');"></div>
+    <div class="slide" style="background-image: url('image/2417e37fc933622c6be17e5ba9bd66ca.jpg');"></div>
+    <div class="slide" style="background-image: url('image/6360008b996726dcc835414cf23adc09.jpg');"></div>
+    <div class="slide" style="background-image: url('image/c2e0a0038c541165e3dc2ca2b15c5db9.jpg');"></div>
+    <div class="slide" style="background-image: url('image/c8ae3fe80cd0538ab6d34a6ad5b8bda8.jpg');"></div>
+    <div class="slide" style="background-image: url('image/33660c87c3027e8cfccb38da49f51633.jpg');"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+        <h2>Welcome to our Restaurant</h2>
+        <p>Experience Comfort, and best Cuisine in East Africa</p>
+        <a href="#contact">Book Now</a>
+    </div>
+</section>
+<!--why us-->
+<section id="why-us" class="why-us-section">
+    <h2 data-aos="fade-up" data-aos-delay="80">Why People Love Us</h2>
+
+    <div class="why-us-grid">
+        <div class="why-box" data-aos="fade-up" data-aos-delay="100">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        <h3>Hospitality</h3>
+        <p>Warm, welcoming service that makes every guest feel at home.</p>
+        </div>
+
+        <div class="why-box" data-aos="fade-up" data-aos-delay="200">
+        <i class="fa-solid fa-broom"></i>
+        <h3>Cleanliness</h3>
+        <p>High standards of hygiene and maintenance in all our spaces.</p>
+        </div>
+
+        <div class="why-box" data-aos="fade-up" data-aos-delay="300">
+        <i class="fa-solid fa-scale-balanced"></i>
+        <h3>Integrity</h3>
+        <p>Transparent and honest dealings with all our guests and partners.</p>
+        </div>
+
+        <div class="why-box" data-aos="fade-up" data-aos-delay="400">
+        <i class="fa-solid fa-people-group"></i>
+        <h3>Community</h3>
+        <p>We are committed to supporting both local and international employment and partnerships.</p>
+        </div>
+
+    </div>
+  </section>
+   <!--menu-->
+  <section id="team" style="padding:60px 20px;background:url(image/bg.jpg); background-size: cover;">
+    <h2 class="team-heading"  data-aos="fade-up">Our Menu</h2>
+
+    <div class="team-carousel">
+      <div class="team-track">
+        
+        <!-- Team Member 1 -->
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
+          <img src="image/4e67706cbf26f7ca86b368e24254ca87.jpg" alt="Grilled Chicken">
+        <div>
+          <h4>Grilled Chicken</h4>
+          <p>TZS 12,000</p>
+        </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+          <img src="image/0cf0fac05fc73109bed490cedda343b5.jpg" alt="Beef Pilau">
+        <div>
+          <h4>Beef Pilau</h4>
+          <p>TZS 10,000</p>
+        </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="300">
+          <img src="image/0494321647288caaa2a5718aad893f85.jpg" alt="Vegetable Rice">
+        <div>
+          <h4>Vegetable Rice</h4>
+          <p>TZS 8,000</p>
+        </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="400">
+           <img src="image/948c5130f48e62ace0df764e68bdc5a3.jpg" alt="Vegetable Rice">
+        <div>
+          <h4>Wet Fry</h4>
+          <p>TZS 9,000</p>
+        </div>
+        </div>
+
+        <!-- Team Member 5 -->
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="500">
+          <img src="image/c3428ac84166b43ea10cc9c34de2044f.jpg" alt="Fresh Juice">
+        <div>
+          <h4>French Toast</h4>
+          <p>TZS 4,000</p>
+        </div>
+        </div>
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="500">
+          <img src="image/0494321647288caaa2a5718aad893f85.jpg" alt="Fresh Juice">
+        <div>
+          <h4>Biryani Chicken</h4>
+          <p>TZS 8,000</p>
+        </div>
+        </div>
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="500">
+          <img src="image/b6784d3f77fde3b1518d8f5958b5b263.jpg" alt="Fresh Juice">
+        <div>
+          <h4>Spicy grills</h4>
+          <p>TZS 10,000</p>
+        </div>
+        </div>
+
+        <div class="menu-item" data-aos="fade-up" data-aos-delay="500">
+          <img src="image/e2048dbed78534c8ca3af46ede7fc74d.jpg" alt="Fresh Juice">
+        <div>
+          <h4>Swahili Chapati</h4>
+          <p>TZS 4,000</p>
+        </div>
+        </div>
+
+
+      </div>
+
+      <!-- Arrows -->
+      <button class="carousel-btn prev">&#10094;</button>
+      <button class="carousel-btn next">&#10095;</button>
+    </div>
+  </section>
+  <!--gallery-->
+  <section class="gallery">
+    <h2 data-aos="fade-up" data-aos-delay="100">Gallery</h2>
+    <div class="row">
+      <div class="column">
+        <img src="image/0cf0fac05fc73109bed490cedda343b5.jpg" data-aos="fade-up" data-aos-delay="200">
+        <img src="image/4e67706cbf26f7ca86b368e24254ca87.jpg" data-aos="fade-up" data-aos-delay="300">
+        <img src="image/6e2bf12ad32bd46f2afcea57080b3ab4.jpg" data-aos="fade-up" data-aos-delay="400">
+        <img src="image/948c5130f48e62ace0df764e68bdc5a3.jpg" data-aos="fade-up" data-aos-delay="500">
+        <img src="image/c3428ac84166b43ea10cc9c34de2044f.jpg" data-aos="fade-up" data-aos-delay="600">
+        <img src="image/e16aa907db619728b3fb8f9948ff8f26.jpg" data-aos="fade-up" data-aos-delay="700">
+        <img src="image/e2048dbed78534c8ca3af46ede7fc74d.jpg" data-aos="fade-up" data-aos-delay="800">
+        <img src="image/0494321647288caaa2a5718aad893f85.jpg" data-aos="fade-up" data-aos-delay="900">
+      </div>
+      <div class="column">
+        <img src="image/c2e0a0038c541165e3dc2ca2b15c5db9.jpg" data-aos="fade-up" data-aos-delay="200">
+        <img src="image/90b8e2092a439e79a8644dfcf56089ca.jpg" data-aos="fade-up" data-aos-delay="300">
+        <img src="image/544e3e4c703f18849d9a1242da229b28.jpg" data-aos="fade-up" data-aos-delay="400">
+        <img src="image/2417e37fc933622c6be17e5ba9bd66ca.jpg" data-aos="fade-up" data-aos-delay="500">
+        <img src="image/d20d517cb616e67b6f9ec7b329627fd6.jpg" data-aos="fade-up" data-aos-delay="600">
+        <img src="image/6360008b996726dcc835414cf23adc09.jpg" data-aos="fade-up" data-aos-delay="700">
+        <img src="image/b6784d3f77fde3b1518d8f5958b5b263.jpg" data-aos="fade-up" data-aos-delay="800">
+        <img src="image/33660c87c3027e8cfccb38da49f51633.jpg" data-aos="fade-up" data-aos-delay="900">
+        <img src="image/8d4afc3c36d918b914a2730e7c3691dd.jpg" data-aos="fade-up" data-aos-delay="900">
+      </div>
+      <div class="column">
+        <img src="image/fb1ee8f725bba49b83518c0aa10b6722.jpg" data-aos="fade-up" data-aos-delay="200">
+        <img src="image/3ba8314c98e5dd20a7a974c4b7601bca.jpg" data-aos="fade-up" data-aos-delay="300">
+        <img src="image/81b5140a8f18a200b5e31a46dad3d082.jpg" data-aos="fade-up" data-aos-delay="400">
+        <img src="image/4e67706cbf26f7ca86b368e24254ca87.jpg" data-aos="fade-up" data-aos-delay="500">
+        <img src="image/0cf0fac05fc73109bed490cedda343b5.jpg" data-aos="fade-up" data-aos-delay="600">
+        <img src="image/4e67706cbf26f7ca86b368e24254ca87.jpg" data-aos="fade-up" data-aos-delay="700">
+        <img src="image/0cf0fac05fc73109bed490cedda343b5.jpg" data-aos="fade-up" data-aos-delay="800">
+      </div>
+      <div class="column">
+        <img src="image/2132aa29fc898b0546777f89d2a9251c.jpg" data-aos="fade-up" data-aos-delay="200">
+        <img src="image/f54d970f4eaf33ed435d00d8ab1d9b3d.jpg" data-aos="fade-up" data-aos-delay="300">
+        <img src="image/6047079836bd19125be753f1910bb037.jpg" data-aos="fade-up" data-aos-delay="400">
+        <img src="image/caf42dd79189679328ba50ff08f8ea4d.jpg" data-aos="fade-up" data-aos-delay="500">
+        <img src="image/7331ca65937f455e347c18259e9cbb47.jpg" data-aos="fade-up" data-aos-delay="600">
+        <img src="image/90b8e2092a439e79a8644dfcf56089ca.jpg" data-aos="fade-up" data-aos-delay="700">
+      </div>
+    </div>
+  </section>
+  <!-- CONTACT -->
+   <section class="address">
+    <h2>Hours</h2>
+    <p>
+      Weekdays - 24 HRS <br>
+      Saturday - 5AM to 12AM<br>
+      Sunday - Holiday
+    </p>
+   </section>
+  <section id="contact" class="contact">
+    <h2>Visit Us</h2>
+    <p>
+       Arusha, Tanzania <br>
+       +255 700 000 000 <br>
+       Open Daily: 8:00 AM – 10:00 PM
+    </p>
+
+    <iframe src="https://www.google.com/maps?q=Arusha%20Tanzania&output=embed"></iframe>
+  </section>
+
+  <!--footer section-->
+    <footer>
+      <div class="footer-col">
+        <h2>ABOUT</h2>
+          <p>Hello & Welcome!...<br>
+              Restaurant Name is a modern, Internationally-owned facility located in the heart of Arusha, Tanzania. Positioned as a preferred destination for conferencing, teambuilding & recreation.</p>
+      </div>
+      <div class="footer-col">
+        <h2>QUICK LINKS</h2>
+          <ul class="list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Policies</a></li>
+          </ul>
+      </div>
+        <div class="footer-col">
+            <h2>FOLLOW US</h2>
+            <div class="social-icons">
+                <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h2>OUR ADDRESS</h2>
+            <p>Restaurant Name<br>Arusha<br>Tanzania</p>
+            <p>Email: Restaurant Name@gmail.com <br>Phone: +255(0)740 646 817</p>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy;2025 Restaurant Name | Arusha . All rights reserved</p>
+        </div>
+    </footer>
+  <!--crafted-->
+    <section class="bottom-footer">
+      <div class="craft">
+        <p>Crafted @  <a href="https://wa.me/254700073919?text=Hello%20I%20am%20interested%20in%20your%20services"> bravitech soln</a></p>
+      </div>
+    </section>
+    </main>
+   <!-- AOS & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1500, once: true });
+    
+   // Toggle menu open/close
+    const menuToggle = document.querySelector('.menuToggle');
+    const header = document.querySelector('header');
+    const navLinks = document.querySelectorAll('header nav ul li a');
+
+    // Toggle menu visibility when hamburger is clicked
+    menuToggle.addEventListener('click', () => {
+      header.classList.toggle('active');
+    });
+
+    // Close menu & smooth scroll when a nav link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // prevent default jump
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        // Smooth scroll
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Close the menu after clicking
+        header.classList.remove('active');
+      });
+    });
+
+    // Optional: close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target) && header.classList.contains('active')) {
+        header.classList.remove('active');
+      }
+    });
+
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    function nextSlide(){
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }
+    setInterval(nextSlide, 5000);
+
+     document.addEventListener("DOMContentLoaded", () => {
+      const track = document.querySelector(".team-track");
+      const next = document.querySelector(".carousel-btn.next");
+      const prev = document.querySelector(".carousel-btn.prev");
+      const cardWidth = 320;
+      let autoSlide;
+
+      // Manual control
+      next.addEventListener("click", () => {
+        track.scrollBy({ left: cardWidth, behavior: "smooth" });
+        resetAutoSlide();
+      });
+
+      prev.addEventListener("click", () => {
+        track.scrollBy({ left: -cardWidth, behavior: "smooth" });
+        resetAutoSlide();
+      });
+
+      // Auto slide function
+      function startAutoSlide() {
+        autoSlide = setInterval(() => {
+          if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+            track.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            track.scrollBy({ left: cardWidth, behavior: "smooth" });
+          }
+        }, 3500); // every 3.5 seconds
+      }
+
+      function resetAutoSlide() {
+        clearInterval(autoSlide);
+        startAutoSlide();
+      }
+
+      startAutoSlide();
+    });
+    let calcScrollValue=()=>{
+      let scrollProgress=document.getElementById("progress");
+      let pos=document.documentElement.scrollTop;
+      let calcHeight=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+      let scrollValue=Math.round((pos*100)/calcHeight);
+      if(pos>100){scrollProgress.style.display="grid";}else{scrollProgress.style.display="none";}
+      scrollProgress.addEventListener("click",()=>{document.documentElement.scrollTop=0;});
+      scrollProgress.style.background=`conic-gradient(#8B2E23 ${scrollValue}%, white ${scrollValue}%)`;
+    };
+    window.onscroll=calcScrollValue;
+    window.onload=calcScrollValue;
+</script>
+</body>
+</html>
